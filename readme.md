@@ -1,5 +1,8 @@
 # CLI.CommandHandler
 
+<a href="https://codeclimate.com/github/scott-the-programmer/CLI.CommandHandler/maintainability"><img src="https://api.codeclimate.com/v1/badges/96f8f4305388f7b0fc4a/maintainability" /></a>
+<a href="https://codeclimate.com/github/scott-the-programmer/CLI.CommandHandler/test_coverage"><img src="https://api.codeclimate.com/v1/badges/96f8f4305388f7b0fc4a/test_coverage" /></a>
+
 This is currently a WIP
 
 ## Intent
