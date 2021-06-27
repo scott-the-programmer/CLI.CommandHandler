@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLI.CommandHandler", "CLI.CommandHandler\CLI.CommandHandler.csproj", "{C1A7CFC5-49D1-49A6-9184-AD5BA1045FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLI.CommandHandler.Tests", "CLI.CommandHandler.Tests\CLI.CommandHandler.Tests.csproj", "{B8611F77-50DB-4F6A-A880-9F0878043F30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1A7CFC5-49D1-49A6-9184-AD5BA1045FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A7CFC5-49D1-49A6-9184-AD5BA1045FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A7CFC5-49D1-49A6-9184-AD5BA1045FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A7CFC5-49D1-49A6-9184-AD5BA1045FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8611F77-50DB-4F6A-A880-9F0878043F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8611F77-50DB-4F6A-A880-9F0878043F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8611F77-50DB-4F6A-A880-9F0878043F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8611F77-50DB-4F6A-A880-9F0878043F30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
