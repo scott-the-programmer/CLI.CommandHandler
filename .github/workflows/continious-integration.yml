@@ -1,0 +1,36 @@
+name: continious-integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    #Core Build & Test
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.301 
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Unit Test
+      run: dotnet test --no-restore --verbosity normal --filter Category!=Integration 
+
+    #Code Climate 
+    - name: Run Coverage
+      uses: paambaati/codeclimate-action@v2.6.0
+      env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+      with:
+        coverageCommand:  dotnet test --no-restore --verbosity normal --filter Category!=Integration  /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../coverage
+        coverageLocations: ${{github.workspace}}/coverage.info:lcov
