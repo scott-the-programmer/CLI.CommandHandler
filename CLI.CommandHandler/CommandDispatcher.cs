@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace CLI.CommandHandler
 {
-    public class CommandDispatcher
+    public class CommandDispatcher : ICommandDispatcher
     {
         public ILogger<CommandDispatcher>? Logger { get; set; }
 
