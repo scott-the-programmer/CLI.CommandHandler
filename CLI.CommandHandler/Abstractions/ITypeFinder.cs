@@ -11,7 +11,7 @@ namespace CLI.CommandHandler.Abstractions
     /// Simple abstractions that defines finding types for a given
     /// assembly
     /// </summary>
-    internal interface ITypeFinder
+    public interface ITypeFinder
     {
         /// <summary>
         /// Retrieves types for a given assembly
