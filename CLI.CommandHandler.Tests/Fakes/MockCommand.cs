@@ -1,3 +1,4 @@
+using System;
 using CLI.CommandHandler.Abstractions;
 
 namespace CLI.CommandHandler.Tests.Fakes
@@ -20,5 +21,10 @@ namespace CLI.CommandHandler.Tests.Fakes
     public class IsolatedCommand : ICommand
     {
         
+    }
+
+    public class ExceptionCommand : ICommand
+    {
+        public Exception ExceptionToThrow { get; set; } = new Exception("I am an exception");
     }
 }

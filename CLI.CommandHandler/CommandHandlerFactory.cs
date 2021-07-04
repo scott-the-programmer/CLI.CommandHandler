@@ -66,7 +66,7 @@ namespace CLI.CommandHandler
             foreach (var assemblyName in _assemblyNames)
             {
                 var assembly = Assembly.Load(assemblyName);
-                var commandType = command.GetType(); 
+                var commandType = command.GetType();
                 if (commandType == null)
                     continue;
                 var commandHandler = GetCommandHandlerType(commandType, assembly);
@@ -76,7 +76,7 @@ namespace CLI.CommandHandler
 
             return null;
         }
-        
+
         private Type? GetCommandHandlerType(Type commandType, Assembly assembly)
         {
             var commandHandlerTypes = _typeFinder.FindAllTypesFor(assembly)

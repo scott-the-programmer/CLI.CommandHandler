@@ -30,7 +30,7 @@ namespace CLI.CommandHandler.Tests
         }
 
         [Test]
-        public void should_throw_arg_exception_if_no_handlers_are_found()
+        public void should_throw_dispatch_exception_if_no_handlers_are_found()
         {
             // Arrange
             var mockCommandFactor = new Mock<ICommandHandlerFactory>();
@@ -42,8 +42,48 @@ namespace CLI.CommandHandler.Tests
             var commandDispatcher = new CommandDispatcher(mockCommandFactor.Object);
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => commandDispatcher.DispatchAsync(command));
+            Assert.Throws<CommandDispatchException>(() => commandDispatcher.DispatchAsync(command));
         }
+        
+        [Test]
+        public void should_throw_dispatch_exception_if_handler_throws()
+        {
+            // Arrange
+            var mockCommandFactor = new Mock<ICommandHandlerFactory>();
+            mockCommandFactor.Setup(m => m.GetCommandHandlerType(It.IsAny<object>()))
+                .Returns(typeof(ExceptionCommandHandler));
+
+            var command = new ExceptionCommand();
+
+            var commandDispatcher = new CommandDispatcher(mockCommandFactor.Object);
+
+            // Act & Assert
+            Assert.ThrowsAsync<CommandDispatchException>(() => commandDispatcher.DispatchAsync(command));
+        }
+        
+        [Test]
+        public void handler_exception_should_include_inner_exception()
+        {
+            // Arrange
+            var mockCommandFactor = new Mock<ICommandHandlerFactory>();
+            mockCommandFactor.Setup(m => m.GetCommandHandlerType(It.IsAny<object>()))
+                .Returns(typeof(ExceptionCommandHandler));
+
+            var command = new ExceptionCommand();
+
+            var commandDispatcher = new CommandDispatcher(mockCommandFactor.Object);
+
+            // Act & Assert
+            var exception = Assert.ThrowsAsync<CommandDispatchException>(() => commandDispatcher.DispatchAsync(command));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.That(exception.InnerException, Is.Not.Null);
+                var innerException = exception.InnerException;
+                Assert.That(innerException!.Message, Is.EqualTo("I am an exception"));
+            });
+        }
+        
 
         [Test]
         public void should_construct() // Superfluous in nature but we want to at least smoke test public constructors 

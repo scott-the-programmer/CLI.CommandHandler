@@ -34,4 +34,12 @@ namespace CLI.CommandHandler.Tests.Fakes
             return Task.CompletedTask;
         } 
     }
+    
+    public class ExceptionCommandHandler : ICommandHandler<ExceptionCommand>
+    {
+        public Task RunAsync(ExceptionCommand command)
+        {
+            throw command.ExceptionToThrow;
+        } 
+    }
 }
