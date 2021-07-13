@@ -1,5 +1,6 @@
 using System;
 using CLI.CommandHandler.Abstractions;
+using CommandLine;
 
 namespace CLI.CommandHandler.Tests.Fakes
 {
@@ -26,5 +27,12 @@ namespace CLI.CommandHandler.Tests.Fakes
     public class ExceptionCommand : ICommand
     {
         public Exception ExceptionToThrow { get; set; } = new Exception("I am an exception");
+    }
+    
+    [Verb("bark")]
+    public class BarkCommand : ICommand
+    {
+        [Option('n', "noise", Required = true)]
+        public string Noise { get; set; }
     }
 }

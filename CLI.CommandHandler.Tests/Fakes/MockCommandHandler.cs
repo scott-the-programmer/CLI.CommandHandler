@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using CLI.CommandHandler.Abstractions;
 
@@ -41,5 +42,14 @@ namespace CLI.CommandHandler.Tests.Fakes
         {
             throw command.ExceptionToThrow;
         } 
+    }
+
+    public class BarkCommandHandler : ICommandHandler<BarkCommand>
+    {
+        public Task RunAsync(BarkCommand command)
+        {
+            Console.WriteLine(command.Noise);
+            return Task.CompletedTask;
+        }
     }
 }
