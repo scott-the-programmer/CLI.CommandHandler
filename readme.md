@@ -31,8 +31,8 @@ At its current state, this project is highly coupled to https://github.com/comma
     {
         public Task HandleAsync(MakeNoise command)
         {
-        Console.WriteLine(command.Noise)
-        return Task.CompletedTask;
+            Console.WriteLine(command.Noise)
+            return Task.CompletedTask;
         }
     }
 ```
